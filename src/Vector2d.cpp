@@ -14,3 +14,29 @@ Vector2d Vector2d::operator*(float scalar) const {
     return Vector2d(x * scalar, y * scalar);
 }
 
+Vector2d& Vector2d::operator+=(const Vector2d& other) {
+    x += other.x;
+    y += other.y;
+    return *this;
+}
+
+Vector2d& Vector2d::operator*=(float scalar) {
+    x *= scalar;
+    y *= scalar;
+    return *this;
+}
+
+float Vector2d::length() const {
+    return std::sqrt((x*x) + (y*y));
+}
+
+Vector2d Vector2d::normalized() const {
+    float len = length();
+    if(len == 0) return Vector2d(0, 0);
+    return Vector2d(x/length(), y/length());
+}
+
+void Vector2d::print() const{
+    std::cout << "x: " << x << " y: " << y << std::endl;
+}
+

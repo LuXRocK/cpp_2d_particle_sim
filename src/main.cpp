@@ -1,18 +1,19 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Vector2d.hpp"
+#include "Particle.hpp"
 
 int main()
 {
 
-    Vector2d a;
-    Vector2d b(1, 3);
-    std::cout << a.x << std::endl;
-    std::cout << b.x << std::endl;
+    Vector2d a(100, 100);
+    Vector2d b(1, 0);
+    float radius = 10.0f;
 
-    sf::RenderWindow window(sf::VideoMode({200, 200}), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    Particle particle1(a, b, radius);
+    particle1.position.print();
+
+    sf::RenderWindow window(sf::VideoMode({1000, 1000}), "SFML works!");
 
     while (window.isOpen())
     {
@@ -23,7 +24,9 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        particle1.draw(window);
+        particle1.update(.25f);
+        particle1.position.print();
         window.display();
     }
 }

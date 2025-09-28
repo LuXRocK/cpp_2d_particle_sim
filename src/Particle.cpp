@@ -1,10 +1,10 @@
 #include "Particle.hpp"
 
 
-Particle::Particle(Vector2d _position, Vector2d _velocity, float _radius) : position(_position), velocity(_velocity), radius(_radius), shape(_radius) {
+Particle::Particle(Vector2d _position, Vector2d _velocity, float _radius, sf::Color _color) : position(_position), velocity(_velocity), radius(_radius), shape(_radius), color(_color) {
     sf::Vector2f origin_pos(_radius, _radius);
     shape.setOrigin(origin_pos);
-    shape.setFillColor(sf::Color::Green);
+    shape.setFillColor(color);
 }
 
 void Particle::update(float dt, int windowWidth, int windowHeight){

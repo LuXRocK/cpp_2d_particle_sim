@@ -37,3 +37,7 @@ void Particle::handleCollisionsWithWalls(int windowWidth, int windowHeight) {
         velocity.y = velocity.y * -1;
     };
 }
+
+float Particle::distance(const Particle& particle){
+    return Vector2d(position.x - particle.position.x, position.y - particle.position.y).length();
+}

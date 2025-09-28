@@ -16,4 +16,5 @@ class Particle {
         void update(float dt, int windwoWidth, int windowHeight);
         void draw(sf::RenderWindow& window);
         void handleCollisionsWithWalls(int windowWidth, int windowHeight);
+        float distance(const Particle& particle1);
 };

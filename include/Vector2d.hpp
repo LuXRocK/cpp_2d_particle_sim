@@ -16,6 +16,7 @@ struct Vector2d {
 
     float length() const;
     Vector2d normalized() const;
+    float dot(const Vector2d& other) const;
     void print() const;
 
 };

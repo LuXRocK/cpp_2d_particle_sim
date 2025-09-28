@@ -36,6 +36,10 @@ Vector2d Vector2d::normalized() const {
     return Vector2d(x/length(), y/length());
 }
 
+float Vector2d::dot(const Vector2d& other) const {
+    return (x * other.x) + (y * other.y);
+}
+
 void Vector2d::print() const{
     std::cout << "x: " << x << " y: " << y << std::endl;
 }

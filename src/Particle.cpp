@@ -54,6 +54,6 @@ void Particle::handleCollisionWithParticles(Particle& other){
 
         float overlap = maxDist - dist;
         position = position + normal * (overlap / 2.0f);
-        other.position = other.position + normal * (overlap / 2.0f);
+        other.position = other.position - normal * (overlap / 2.0f);
     }
 }

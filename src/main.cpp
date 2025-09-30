@@ -9,9 +9,6 @@
 
 int main(int argc, char* argv[])
 {
-
-    World  world;
-
     float dt;
     int particles_amnt;
 
@@ -30,14 +27,16 @@ int main(int argc, char* argv[])
 
     std::vector<sf::Color> colors {sf::Color::Green, sf::Color::Blue, sf::Color::Red};
 
+    sf::RenderWindow window(sf::VideoMode({1000, 1000}), "SFML works!");
+
+    World  world(window.getSize().x, window.getSize().y);
+
     for(int i = 0; i < particles_amnt; i++){
         world.addParticle(Vector2d(rand() % 1001, rand() % 1001),
                     Vector2d(rand() % 21 - 10, rand() % 21 - 10),
                     rand() % 21 + 5, colors[rand() % 3]);
     }
-
-    sf::RenderWindow window(sf::VideoMode({1000, 1000}), "SFML works!");
-
+    
     while (window.isOpen())
     {
         while (const std::optional event = window.pollEvent())

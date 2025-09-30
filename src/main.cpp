@@ -36,9 +36,6 @@ int main(int argc, char* argv[])
                     rand() % 21 + 5, colors[rand() % 3]);
     }
 
-    // world.addParticle(Vector2d(250, 500), Vector2d(1, 0), 10, colors[0]);
-    // world.addParticle(Vector2d(750, 500), Vector2d(-1, 0), 10, colors[1]);
-    
     sf::RenderWindow window(sf::VideoMode({1000, 1000}), "SFML works!");
 
     while (window.isOpen())

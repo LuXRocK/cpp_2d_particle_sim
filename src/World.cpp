@@ -14,15 +14,7 @@ void World::update(float dt, int windowWidth, int windowHeight){
 
     for(int i = 0; i < particles.size(); i++){
         for(int j = i + 1; j < particles.size(); j++){
-            float dist = particles[i].distance(particles[j]);
-            float maxDist = particles[i].radius + particles[j].radius;
-            if(dist <= maxDist){
-                Vector2d normal = particles[i].position - particles[j].position;
-                normal = normal.normalized();
-
-                particles[i].velocity = particles[i].velocity - normal * (2.0f * particles[i].velocity.dot(normal));
-                particles[j].velocity = particles[j].velocity - normal * (2.0f * particles[j].velocity.dot(normal));
-            }
+            particles[i].handleCollisionWithParticles(particles[j]);
         }
     }
 }

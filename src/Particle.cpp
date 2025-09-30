@@ -38,6 +38,22 @@ void Particle::handleCollisionsWithWalls(int windowWidth, int windowHeight) {
     };
 }
 
-float Particle::distance(const Particle& particle){
-    return Vector2d(position.x - particle.position.x, position.y - particle.position.y).length();
+float Particle::distance(const Particle& other){
+    return Vector2d(position.x - other.position.x, position.y - other.position.y).length();
+}
+
+void Particle::handleCollisionWithParticles(Particle& other){
+    float dist = distance(other);
+    float maxDist = radius + other.radius;
+    if(dist <= maxDist && dist > 0.0f){
+        Vector2d normal = position - other.position;
+        normal = normal.normalized();
+
+        velocity = velocity - normal * (2.0f * velocity.dot(normal));
+        other.velocity = other.velocity - normal * (2.0f * other.velocity.dot(normal));
+
+        float overlap = maxDist - dist;
+        position = position + normal * (overlap / 2.0f);
+        other.position = other.position + normal * (overlap / 2.0f);
+    }
 }
